@@ -1,0 +1,136 @@
+<div class="container">
+  <form>
+    <div class="row">
+      <div class="col-md-4">
+        <select id='select'>
+          <option value='1'>Select Genre</option>
+          <% @genres.each do |f|%>
+          <option value='<%= f.id %>'>
+          <%= f.name %>
+          </option>
+          <% end %>
+          </select>
+      </div>
+      <div class="col-md-8">
+        <div id="movieDiv">
+
+        </div>
+      </div>
+    </div>
+    <div class="row main-bottom">
+      <div class="col-md-6">
+        <a class='btn btn-danger' id="advance_saerch">Detail Search</a>  
+      </div>
+      <div class="col-md-6">
+        <a class='btn btn-primary search_movie' id='search_movie'>Search</a>
+      </div>
+    </div>
+
+    <div class='show_advance_search'>
+      <div class="row">
+        <div class="col-md-6">
+          <div id="list_year">
+            <ul>
+            <% @movies.each do |f| %>
+              <li>
+                <input id='list_year' type='checkbox' multiple='true'  name='list_year[]' value="<%=f.release_date%>" ><%=f.release_date%>
+              </li>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div id="list_keyword">
+            <ul>
+            <% @movies.each do |f| %>
+              <li>
+                <input id='list_keyword' type='checkbox' multiple='true'  name='list_keyword[]' value="<% f.director %>"><%=f.director%>
+              </li>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-10">
+          <%= text_field_tag :search, params[:search_name_movie], data: { autocomplete: autocomplete_movie_name_genres_path } %>
+        </div>
+      </div>
+          <div class="row main-bottom">
+      <div class="col-md-10">
+        <a class='btn btn-success search_movie' id="advance_saerch">Advance Search</a>
+      </div>
+    </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div id="showList"></div>
+      </div>
+    </div>
+  </form>
+</div>
+<style>
+#select {
+  padding: 5px 90px 5px 90px;
+  font-size: 15px;
+}
+.show_advance_search {
+  display: none;
+}
+#search {
+  margin-top: 30px;
+}
+.main-bottom {
+  margin: 50px 0 50px 0;
+}
+#movieDiv ul {}
+#movieDiv ul li{
+  padding-right: 15px;
+  display: inline-block;
+}
+#movieDiv ul li input {
+  margin-right: 5px;
+}
+
+#list_keyword {
+  border: 1px solid #000000;
+  border-radius: 5px;
+}
+#list_keyword ul {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 10px;
+}
+#list_keyword ul li{
+  padding-right: 15px;
+  display: inline-block;
+}
+
+#list_keyword ul li input {
+  margin-right: 5px;
+}
+
+#list_year {
+  border: 1px solid #000000;
+  border-radius: 5px;
+}
+#list_year ul {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 10px;
+}
+#list_year ul li{
+  padding-right: 15px;
+  display: inline-block;
+}
+#list_year ul li input {
+  margin-right: 5px;
+}
+#inputSearch {
+  margin: 50px 0 20px 0;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  margin-left: 7px;
+  padding: 0;
+}
+</style>

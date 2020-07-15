@@ -1,0 +1,23 @@
+<div class="container">
+<h1>Movies</h1>
+
+<table class="table">
+
+  <tbody>
+    <tr> 
+      <td><strong>Name</strong></td>
+      <td><strong>Director</strong></td>
+      <td><strong>Star</strong></td>
+    </tr>
+    <% @movies.each do |movie| %>
+      <tr>
+
+        <td><%= movie.name %></td>
+        <td><%= movie.director %></td>
+        <td><%= movie.star %></td>
+                
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
