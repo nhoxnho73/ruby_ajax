@@ -1,10 +1,11 @@
 $(document).ready(function() {
-  getData()
-  function getData () {
+
+  load_genre();
+  function load_genre() {
     $.ajax({
       url: "update_movie_list",
       data: {
-        genre_id : 1
+        genre_id : $('#select_genre').val()
       },
       method: 'GET',
       success: function(data) {
@@ -20,13 +21,11 @@ $(document).ready(function() {
     });
   }
 
-
-
-  $('#select').change(function() {
+  $('#select_genre').change(function() {
     $.ajax({
       url: "update_movie_list",
       data: {
-        genre_id : $('#select').val()
+        genre_id : $('#select_genre').val()
       },
       method: 'GET',
       success: function(data) {
@@ -78,27 +77,15 @@ $(document).ready(function() {
     }
   });
 
-  var arrSearch = []
-  $('body').on('click', '#search', function(){
-    check = arrSearch.includes($(this).val())
-    if (!check) {
-      arrSearch.push($(this).val())
-    }
-    else
-    {
-      arrSearch.splice(arrSearch.indexOf($(this).val()), 1);
-    }
-  });
-
   $('.search_movie').click(function() {
     $.ajax({
-      url: "search",
+      url: "search_movie_lists",
       method: 'GET',
       data: {
         list_movie : listMovie,
         list_year : listYear,
         list_keyword : listKeyword,
-        list_search  : $("#search").val()
+        list_search  : $("#search_name_movie").val()
       },
       success: function(data) {
         var searchs = data.searchs;
@@ -110,7 +97,6 @@ $(document).ready(function() {
             +"<td>"+searchs[i].star+"</td>"
             +"<td>"+searchs[i].release_date+"</td>"
             + `<td><a href="${searchs[i].summary}">${searchs[i].summary}</a></td>`
-            // + "<td><a href="+searchs[i].summary+">"+searchs[i].summary+"</a></td>"
           + "</tr>"
         }
         $('#showList').html(
@@ -154,6 +140,8 @@ $(document).ready(function() {
           }]
         });
       }
+
+
     });
   });
 

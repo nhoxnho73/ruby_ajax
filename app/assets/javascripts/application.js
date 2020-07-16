@@ -16,7 +16,7 @@
 //= require jquery_ujs
 //= require jquery-ui/widgets/autocomplete
 //= require autocomplete-rails
-
+//= require datatables.min.js
 //= require activestorage
 //= require turbolinks
 //= require popper

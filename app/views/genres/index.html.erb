@@ -2,7 +2,7 @@
   <form>
     <div class="row">
       <div class="col-md-4">
-        <select id='select'>
+        <select id='select_genre'>
           <option value='1'>Select Genre</option>
           <% @genres.each do |f|%>
           <option value='<%= f.id %>'>
@@ -33,7 +33,9 @@
             <ul>
             <% @movies.each do |f| %>
               <li>
+              <% if f.release_date.present? %>
                 <input id='list_year' type='checkbox' multiple='true'  name='list_year[]' value="<%=f.release_date%>" ><%=f.release_date%>
+              <% end %>
               </li>
             <% end %>
             </ul>
@@ -44,7 +46,9 @@
             <ul>
             <% @movies.each do |f| %>
               <li>
+              <% if f.director.present? %>
                 <input id='list_keyword' type='checkbox' multiple='true'  name='list_keyword[]' value="<% f.director %>"><%=f.director%>
+              <% end %>
               </li>
             <% end %>
             </ul>
@@ -53,7 +57,7 @@
       </div>
       <div class="row">
         <div class="col-md-10">
-          <%= text_field_tag :search, params[:search_name_movie], data: { autocomplete: autocomplete_movie_name_genres_path } %>
+          <%= text_field_tag :search_summary_movie, params[:search_summary_movie], data: { autocomplete: autocomplete_movie_summary_genres_path } %>
         </div>
       </div>
           <div class="row main-bottom">
@@ -70,17 +74,18 @@
   </form>
 </div>
 <style>
-#select {
+#select_genre {
   padding: 5px 90px 5px 90px;
   font-size: 15px;
 }
 .show_advance_search {
   display: none;
 }
-#search {
+#search_summary_movie {
   margin-top: 30px;
 }
 .main-bottom {
+  text-align: center;
   margin: 50px 0 50px 0;
 }
 #movieDiv ul {}
@@ -126,7 +131,7 @@
 #list_year ul li input {
   margin-right: 5px;
 }
-#inputSearch {
+#search_name_movie {
   margin: 50px 0 20px 0;
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button {
