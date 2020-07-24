@@ -22,6 +22,7 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require movies
+//= require sweetalert2
 //= require_tree .
 
 
@@ -38,7 +39,5 @@ document.addEventListener("turbolinks:load", function() {
     });
   });
 
-
 });
-
 

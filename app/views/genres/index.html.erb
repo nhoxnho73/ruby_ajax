@@ -31,7 +31,7 @@
         <div class="col-md-6">
           <div id="list_year">
             <ul>
-            <% @movies.each do |f| %>
+            <% @movies.group(:release_date).each do |f| %>
               <li>
               <% if f.release_date.present? %>
                 <input id='list_year' type='checkbox' multiple='true'  name='list_year[]' value="<%=f.release_date%>" ><%=f.release_date%>
@@ -44,10 +44,10 @@
         <div class="col-md-6">
           <div id="list_keyword">
             <ul>
-            <% @movies.each do |f| %>
+            <% @movies.group(:director).each do |f| %>
               <li>
               <% if f.director.present? %>
-                <input id='list_keyword' type='checkbox' multiple='true'  name='list_keyword[]' value="<% f.director %>"><%=f.director%>
+                <input id='list_keyword' type='checkbox' multiple='true'  name='list_keyword[]' value="<%= f.director %>" ><%=f.director%>
               <% end %>
               </li>
             <% end %>
@@ -57,7 +57,7 @@
       </div>
       <div class="row">
         <div class="col-md-10">
-          <%= text_field_tag :search_summary_movie, params[:search_summary_movie], data: { autocomplete: autocomplete_movie_summary_genres_path } %>
+          <%= text_field_tag :search_name_movie, params[:search_summary_movie], data: { autocomplete: autocomplete_movie_summary_genres_path } %>
         </div>
       </div>
           <div class="row main-bottom">
