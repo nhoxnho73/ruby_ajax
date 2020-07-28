@@ -85,7 +85,7 @@ $(document).ready(function() {
         list_movie : listMovie,
         list_year : listYear,
         list_keyword : listKeyword,
-        list_search  : $("#search_name_movie").val()
+        list_search  : $("#search_name_movie").val() === null ? null : $("#search_name_movie").val()
       },
       success: function(data) {
         var searchs = data.searchs;
