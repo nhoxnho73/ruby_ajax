@@ -29101,3 +29101,343 @@ Processing by GenresController#search_movie_lists as */*
 Completed 200 OK in 9ms (Views: 2.4ms | ActiveRecord: 0.8ms)
 
 
+Started GET "/genres" for ::1 at 2020-07-28 16:43:19 +0700
+Processing by GenresController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/phonglt/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  Rendering genres/index.html.erb within layouts/application
+  [1m[36mGenre Load (0.1ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  ↳ app/views/genres/index.html.erb:7
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" GROUP BY "movies"."release_date"[0m
+  ↳ app/views/genres/index.html.erb:34
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" GROUP BY "movies"."director"[0m
+  ↳ app/views/genres/index.html.erb:47
+  Rendered genres/index.html.erb within layouts/application (9.2ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 100ms (Views: 87.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/update_movie_list?genre_id=1" for ::1 at 2020-07-28 16:43:22 +0700
+Processing by GenresController#update_movie_list as */*
+  Parameters: {"genre_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/phonglt/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMovie Load (0.4ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."genre_id" = ?[0m  [["genre_id", 1]]
+  ↳ app/controllers/genres_controller.rb:21
+Completed 200 OK in 17ms (Views: 8.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/search_movie_lists?list_movie%5B%5D=baby+run&list_search=" for ::1 at 2020-07-28 16:43:24 +0700
+Processing by GenresController#search_movie_lists as */*
+  Parameters: {"list_movie"=>["baby run"], "list_search"=>""}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/phonglt/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMovie Load (0.4ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE (name IN ('baby run') OR release_date IN (NULL) OR director IN (NULL))[0m
+  ↳ app/controllers/genres_controller.rb:28
+Completed 200 OK in 7ms (Views: 1.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/search_movie_lists?list_movie%5B%5D=baby+run&list_movie%5B%5D=tom+and+jery&list_search=" for ::1 at 2020-07-28 16:43:26 +0700
+Processing by GenresController#search_movie_lists as */*
+  Parameters: {"list_movie"=>["baby run", "tom and jery"], "list_search"=>""}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/phonglt/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMovie Load (0.5ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE (name IN ('baby run','tom and jery') OR release_date IN (NULL) OR director IN (NULL))[0m
+  ↳ app/controllers/genres_controller.rb:28
+Completed 200 OK in 10ms (Views: 2.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/genres" for ::1 at 2020-07-28 16:45:15 +0700
+Processing by GenresController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/phonglt/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  Rendering genres/index.html.erb within layouts/application
+  [1m[36mGenre Load (0.1ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  ↳ app/views/genres/index.html.erb:7
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" GROUP BY "movies"."release_date"[0m
+  ↳ app/views/genres/index.html.erb:34
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" GROUP BY "movies"."director"[0m
+  ↳ app/views/genres/index.html.erb:47
+  Rendered genres/index.html.erb within layouts/application (9.6ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 144ms (Views: 129.1ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/update_movie_list?genre_id=1" for ::1 at 2020-07-28 16:45:17 +0700
+Processing by GenresController#update_movie_list as */*
+  Parameters: {"genre_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/phonglt/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."genre_id" = ? ORDER BY "movies"."name" ASC[0m  [["genre_id", 1]]
+  ↳ app/controllers/genres_controller.rb:21
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/genres" for ::1 at 2020-07-28 16:46:30 +0700
+Processing by GenresController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/phonglt/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  Rendering genres/index.html.erb within layouts/application
+  [1m[36mGenre Load (0.2ms)[0m  [1m[34mSELECT "genres".* FROM "genres" GROUP BY "genres"."name"[0m
+  ↳ app/views/genres/index.html.erb:7
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" GROUP BY "movies"."release_date"[0m
+  ↳ app/views/genres/index.html.erb:34
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" GROUP BY "movies"."director"[0m
+  ↳ app/views/genres/index.html.erb:47
+  Rendered genres/index.html.erb within layouts/application (9.3ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 105ms (Views: 90.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/update_movie_list?genre_id=2" for ::1 at 2020-07-28 16:46:32 +0700
+Processing by GenresController#update_movie_list as */*
+  Parameters: {"genre_id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/phonglt/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."genre_id" = ?[0m  [["genre_id", 2]]
+  ↳ app/controllers/genres_controller.rb:21
+Completed 200 OK in 19ms (Views: 4.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/update_movie_list?genre_id=1" for ::1 at 2020-07-28 16:46:36 +0700
+Processing by GenresController#update_movie_list as */*
+  Parameters: {"genre_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/phonglt/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."genre_id" = ?[0m  [["genre_id", 1]]
+  ↳ app/controllers/genres_controller.rb:21
+Completed 200 OK in 10ms (Views: 5.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/update_movie_list?genre_id=3" for ::1 at 2020-07-28 16:46:45 +0700
+Processing by GenresController#update_movie_list as */*
+  Parameters: {"genre_id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/phonglt/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."genre_id" = ?[0m  [["genre_id", 3]]
+  ↳ app/controllers/genres_controller.rb:21
+Completed 200 OK in 8ms (Views: 2.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/update_movie_list?genre_id=1" for ::1 at 2020-07-28 16:46:47 +0700
+Processing by GenresController#update_movie_list as */*
+  Parameters: {"genre_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/phonglt/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."genre_id" = ?[0m  [["genre_id", 1]]
+  ↳ app/controllers/genres_controller.rb:21
+Completed 200 OK in 4ms (Views: 1.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/genres" for ::1 at 2020-07-28 16:47:39 +0700
+Processing by GenresController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/phonglt/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  Rendering genres/index.html.erb within layouts/application
+  [1m[36mGenre Load (0.1ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  ↳ app/views/genres/index.html.erb:7
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" GROUP BY "movies"."release_date"[0m
+  ↳ app/views/genres/index.html.erb:34
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" GROUP BY "movies"."director"[0m
+  ↳ app/views/genres/index.html.erb:47
+  Rendered genres/index.html.erb within layouts/application (9.5ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 100ms (Views: 86.9ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/update_movie_list?genre_id=1" for ::1 at 2020-07-28 16:47:41 +0700
+Processing by GenresController#update_movie_list as */*
+  Parameters: {"genre_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/phonglt/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."genre_id" = ? GROUP BY "movies"."name"[0m  [["genre_id", 1]]
+  ↳ app/controllers/genres_controller.rb:21
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/update_movie_list?genre_id=2" for ::1 at 2020-07-28 16:47:43 +0700
+Processing by GenresController#update_movie_list as */*
+  Parameters: {"genre_id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/phonglt/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."genre_id" = ? GROUP BY "movies"."name"[0m  [["genre_id", 2]]
+  ↳ app/controllers/genres_controller.rb:21
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/update_movie_list?genre_id=3" for ::1 at 2020-07-28 16:47:46 +0700
+Processing by GenresController#update_movie_list as */*
+  Parameters: {"genre_id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/phonglt/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."genre_id" = ? GROUP BY "movies"."name"[0m  [["genre_id", 3]]
+  ↳ app/controllers/genres_controller.rb:21
+Completed 200 OK in 12ms (Views: 4.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/update_movie_list?genre_id=2" for ::1 at 2020-07-28 16:47:48 +0700
+Processing by GenresController#update_movie_list as */*
+  Parameters: {"genre_id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/phonglt/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."genre_id" = ? GROUP BY "movies"."name"[0m  [["genre_id", 2]]
+  ↳ app/controllers/genres_controller.rb:21
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/update_movie_list?genre_id=1" for ::1 at 2020-07-28 16:47:49 +0700
+Processing by GenresController#update_movie_list as */*
+  Parameters: {"genre_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/phonglt/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."genre_id" = ? GROUP BY "movies"."name"[0m  [["genre_id", 1]]
+  ↳ app/controllers/genres_controller.rb:21
+Completed 200 OK in 4ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/update_movie_list?genre_id=1" for ::1 at 2020-07-28 16:47:51 +0700
+Processing by GenresController#update_movie_list as */*
+  Parameters: {"genre_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/phonglt/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."genre_id" = ? GROUP BY "movies"."name"[0m  [["genre_id", 1]]
+  ↳ app/controllers/genres_controller.rb:21
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/update_movie_list?genre_id=1" for ::1 at 2020-07-28 16:47:53 +0700
+Processing by GenresController#update_movie_list as */*
+  Parameters: {"genre_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/phonglt/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."genre_id" = ? GROUP BY "movies"."name"[0m  [["genre_id", 1]]
+  ↳ app/controllers/genres_controller.rb:21
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/update_movie_list?genre_id=1" for ::1 at 2020-07-28 16:47:54 +0700
+Processing by GenresController#update_movie_list as */*
+  Parameters: {"genre_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/phonglt/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."genre_id" = ? GROUP BY "movies"."name"[0m  [["genre_id", 1]]
+  ↳ app/controllers/genres_controller.rb:21
+Completed 200 OK in 10ms (Views: 3.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/genres" for ::1 at 2020-07-28 16:48:06 +0700
+Processing by GenresController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/phonglt/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  Rendering genres/index.html.erb within layouts/application
+  [1m[36mGenre Load (0.1ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  ↳ app/views/genres/index.html.erb:7
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" GROUP BY "movies"."release_date"[0m
+  ↳ app/views/genres/index.html.erb:34
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" GROUP BY "movies"."director"[0m
+  ↳ app/views/genres/index.html.erb:47
+  Rendered genres/index.html.erb within layouts/application (4.0ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 93ms (Views: 89.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/update_movie_list?genre_id=1" for ::1 at 2020-07-28 16:48:08 +0700
+Processing by GenresController#update_movie_list as */*
+  Parameters: {"genre_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/phonglt/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."genre_id" = ? GROUP BY "movies"."name"[0m  [["genre_id", 1]]
+  ↳ app/controllers/genres_controller.rb:21
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/update_movie_list?genre_id=2" for ::1 at 2020-07-28 16:48:09 +0700
+Processing by GenresController#update_movie_list as */*
+  Parameters: {"genre_id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/phonglt/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMovie Load (6.8ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."genre_id" = ? GROUP BY "movies"."name"[0m  [["genre_id", 2]]
+  ↳ app/controllers/genres_controller.rb:21
+Completed 200 OK in 10ms (Views: 1.1ms | ActiveRecord: 6.9ms)
+
+
+Started GET "/update_movie_list?genre_id=" for ::1 at 2020-07-28 16:48:10 +0700
+Processing by GenresController#update_movie_list as */*
+  Parameters: {"genre_id"=>""}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/phonglt/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 5ms (Views: 0.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/genres" for ::1 at 2020-07-28 16:48:47 +0700
+Processing by GenresController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/phonglt/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  Rendering genres/index.html.erb within layouts/application
+  [1m[36mGenre Load (0.2ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  ↳ app/views/genres/index.html.erb:7
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" GROUP BY "movies"."release_date"[0m
+  ↳ app/views/genres/index.html.erb:34
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" GROUP BY "movies"."director"[0m
+  ↳ app/views/genres/index.html.erb:47
+  Rendered genres/index.html.erb within layouts/application (6.2ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 102ms (Views: 95.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/update_movie_list?genre_id=1" for ::1 at 2020-07-28 16:48:52 +0700
+Processing by GenresController#update_movie_list as */*
+  Parameters: {"genre_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/phonglt/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."genre_id" = ? GROUP BY "movies"."name"[0m  [["genre_id", 1]]
+  ↳ app/controllers/genres_controller.rb:21
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/genres/autocomplete_movie_summary?term=de" for ::1 at 2020-07-28 16:48:59 +0700
+Processing by GenresController#autocomplete_movie_summary as JSON
+  Parameters: {"term"=>"de"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/phonglt/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE (LOWER(summary) LIKE LOWER('de%')) ORDER BY LOWER(summary) ASC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ /home/phonglt/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/genres/autocomplete_movie_summary?term=dem" for ::1 at 2020-07-28 16:49:01 +0700
+Processing by GenresController#autocomplete_movie_summary as JSON
+  Parameters: {"term"=>"dem"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/phonglt/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMovie Load (0.8ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE (LOWER(summary) LIKE LOWER('dem%')) ORDER BY LOWER(summary) ASC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ /home/phonglt/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 7ms (Views: 0.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/genres/autocomplete_movie_summary?term=demo" for ::1 at 2020-07-28 16:49:01 +0700
+Processing by GenresController#autocomplete_movie_summary as JSON
+  Parameters: {"term"=>"demo"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/phonglt/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE (LOWER(summary) LIKE LOWER('demo%')) ORDER BY LOWER(summary) ASC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ /home/phonglt/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/search_movie_lists?list_search=demo+test" for ::1 at 2020-07-28 16:49:04 +0700
+Processing by GenresController#search_movie_lists as */*
+  Parameters: {"list_search"=>"demo test"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/phonglt/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE (name IN (NULL) OR release_date IN (NULL) OR director IN (NULL) OR summary LIKE '%demo test%')[0m
+  ↳ app/controllers/genres_controller.rb:26
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
