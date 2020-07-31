@@ -1,10 +1,17 @@
 class MoviesController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :authenticate_user!
-
   before_action :set_params, only: [:destroy, :show, :edit, :update]
 
   def index
-    @movies = Movie.all
+    
+    # binding.pry
+    # @movies = Movie.where(user_id: current_user.id)
+    if current_user.present?
+      @movies = current_user.movies
+    end
+    # binding.pry
+    
   end
 
   def new 
@@ -14,6 +21,7 @@ class MoviesController < ApplicationController
 
   def create
     @movie = Movie.new(movie_params)
+    @movie.user_id = current_user.id
 
     if @movie.save!
       MovieMailer.with(movie: @movie).new_movie_email.deliver_later
@@ -52,8 +60,9 @@ class MoviesController < ApplicationController
   end
 
   def movie_params
-    params.require(:movie).permit(:name, :genre_id, :director, :star, :release_date, :summary)
+    params.require(:movie).permit(:name, :genre_id, :director, :star, :release_date, :summary, :user_id)
   end
+
 
 end
 

@@ -15,7 +15,7 @@ Rails.application.configure do
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
   if Rails.root.join('tmp', 'caching-dev.txt').exist?
-    config.action_controller.perform_caching = true
+    config.action_controller.perform_caching = false
 
     config.cache_store = :memory_store
     config.public_file_server.headers = {
@@ -61,5 +61,9 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
   config.action_mailer.default_url_options = { host: 'localhost', port: 3001 }
+  #Don't care if the mailer can't send.
+  config.active_job.queue_adapter = :sidekiq
+  config.active_job.queue_name_prefix = "mysite"
+  config.active_job.queue_name_delimiter = "_"
 
 end

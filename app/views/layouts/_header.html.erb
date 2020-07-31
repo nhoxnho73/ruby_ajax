@@ -10,6 +10,9 @@
             <%= link_to  "Movies", movies_path, class: "nav-link" %><span class="sr-only">(current)</span>
           </li>
           <li class="nav-item">
+            <%= link_to  "Genres", genres_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
             <% if user_signed_in? %>
               <%= link_to  "logout", destroy_user_session_path, method: :delete, class: "nav-link disabled" %>
             <% else %>

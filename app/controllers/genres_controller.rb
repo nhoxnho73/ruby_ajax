@@ -1,6 +1,6 @@
 class GenresController < ApplicationController
   before_action :authenticate_user!
-  autocomplete :movie, :summary, label_method: :full_name, full_model: true
+  autocomplete :movie, :summary
   before_action :set_params, only: [:show]
   def index
     @genres = Genre.all
@@ -29,6 +29,11 @@ class GenresController < ApplicationController
     end
     
     render json: { searchs: @searchs }
+  end
+
+  def autocomplete_movie_summary
+    movies = Movie.where('summary LIKE ?', "%#{params[:search_summary_movie]}%").group(:summary).order(:summary).all
+    render :json => movies.map { |movie| {:id => movie.id, :label => movie.summary, :value => movie.summary} }
   end
 
   private
