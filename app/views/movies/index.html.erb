@@ -1,17 +1,15 @@
 <div class="container">
 <h1>Movies</h1>
-<div class="row">
-  <div class="col-md-10"></div>
-  <div class="col-md-2"><%=link_to "New Movie", new_movie_path, class: "btn btn-primary" %></div>
-</div>
+
 <div class="row">
   <table class="table">
-
     <tbody>
       <tr> 
         <td><strong>Name</strong></td>
         <td><strong>Director</strong></td>
         <td><strong>Star</strong></td>
+        <td><strong>Genre</strong></td>
+        <td style="text-align: center;"><strong>Image</strong></td>
         <td></td>
       </tr>
       <% @movies.each do |movie| %>
@@ -19,10 +17,25 @@
           <td><%= movie.name %></td>
           <td><%= movie.director %></td>
           <td><%= movie.star %></td>
+          <td><%= movie.genre.name %></td>
+          <td style="text-align: center;"><%= image_tag(movie.image.url, style: "width: 60px; height: auto;") if movie.image.exists? %></td>
           <td><%= link_to "Show", movie_path(movie.id), class: "btn btn-success" %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
+</div>
+<div class="row">
+  <div class="col-md-8"></div>
+  <div class="col-md-4">
+    <%= will_paginate @movies%>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-10">
+    <%= link_to "Download", dowloads_path, class: "btn btn-success" %> |
+    <%= link_to "Dowload Zip", detail_zips_path, class: "btn btn-primary" %> |
+    <%= link_to "New Movie", new_movie_path, class: "btn btn-warning" %>
+  </div>
 </div>
 </div>

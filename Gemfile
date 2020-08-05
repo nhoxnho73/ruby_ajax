@@ -33,7 +33,10 @@ gem 'devise'
 gem 'sidekiq'
 gem 'whenever', require: false
 gem "axlsx"
-
+gem 'rubyzip'
+gem 'zip-zip'
+gem "paperclip"
+gem 'will_paginate'
 
 #add gem myself
 gem 'bootstrap', '~> 4.0.0'

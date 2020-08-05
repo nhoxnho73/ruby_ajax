@@ -1,3 +1,4 @@
+require 'axlsx'
 class MoviesController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :authenticate_user!
@@ -5,13 +6,40 @@ class MoviesController < ApplicationController
 
   def index
     
-    # binding.pry
-    # @movies = Movie.where(user_id: current_user.id)
     if current_user.present?
-      @movies = current_user.movies
+      @movies = current_user.movies.paginate(page: params[:page], per_page: 10)
     end
-    # binding.pry
     
+  end
+
+  def detail_zip
+    
+    # @movies = current_user.movies.all
+    # @movie = Movie.first.generate_file(@movies)
+  end
+
+  def dowload
+    movies = current_user.movies.all
+    date = Date.today.strftime '%Y%m%d'
+    Axlsx::Package.new do |package|
+      package.workbook do |wb|
+        wb.add_worksheet(name: "#{date}_moves") do |sheet|
+          sheet.add_row ["ID", "Name", "Director", "Star", "Release date", "Summary"]
+          movies.each do |movie|
+            sheet.add_row [movie.id, movie.name, movie.director, movie.star, movie.release_date, movie.summary]
+          end
+        end
+      end
+
+      Dir.mktmpdir do |dir|
+        xlsx_path = dir + "#{date}_movie_web.xlsx"
+        package.serialize xlsx_path
+  
+        respond_to do |format|
+          format.all { send_file xlsx_path }
+        end
+      end
+    end
   end
 
   def new 
@@ -43,7 +71,9 @@ class MoviesController < ApplicationController
   end
 
   def update
-    @movie.update(movie_params)
+    # binding.pry
+    @movie.update! movie_params
+    @movie.update!(genre_id: params[:genre_id])
     redirect_to movies_path
 
   end
@@ -60,7 +90,7 @@ class MoviesController < ApplicationController
   end
 
   def movie_params
-    params.require(:movie).permit(:name, :genre_id, :director, :star, :release_date, :summary, :user_id)
+    params.require(:movie).permit(:name, :genre_id, :director, :star, :release_date, :summary, :user_id, :image)
   end
 
 

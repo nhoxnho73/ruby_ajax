@@ -13,16 +13,19 @@
       </div>
       <div class="col-md-8">
         <div id="movieDiv">
-
+          <%# add toggle with id movieDiv %>
         </div>
       </div>
     </div>
     <div class="row main-bottom">
-      <div class="col-md-6">
+      <div class="col-md-4">
         <a class='btn btn-danger' id="advance_saerch">Detail Search</a>  
       </div>
-      <div class="col-md-6">
+      <div class="col-md-4">
         <a class='btn btn-primary search_movie' id='search_movie'>Search</a>
+      </div>
+      <div class="col-md-4">
+        <%= link_to  "Add new", new_genre_path, class: "btn btn-primary" %>
       </div>
     </div>
 

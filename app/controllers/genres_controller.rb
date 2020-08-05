@@ -7,6 +7,25 @@ class GenresController < ApplicationController
     @movies = Movie.all
   end
 
+  def new 
+    @genre = Genre.new
+  end
+
+  def import
+    Genre.import(params[:file])
+    redirect_to root_path, notice: "Imported."
+  end
+
+  def create
+    @genre = Genre.create(genre_params)
+    if @genre.save!
+      flash[:infor] = "create genre successfull"
+      redirect_to genres_path
+    else
+      flash[:alert] = "create genre fails"
+    end
+  end
+
   def show
     @movies = Movie.all
     set_params
@@ -40,6 +59,10 @@ class GenresController < ApplicationController
 
   def set_params
     @genre = Genre.find(params[:id])
+  end
+
+  def genre_params
+    params.require(:genre).permit(:name)
   end
 
 end

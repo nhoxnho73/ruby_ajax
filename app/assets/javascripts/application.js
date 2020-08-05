@@ -18,7 +18,7 @@
 //= require autocomplete-rails
 //= require datatables.min.js
 //= require activestorage
-//= require turbolinks
+// require turbolinks
 //= require popper
 //= require bootstrap-sprockets
 //= require movies

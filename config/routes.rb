@@ -7,9 +7,12 @@ Rails.application.routes.draw do
 
   get "/update_movie_list" => "genres#update_movie_list"
   get "/search_movie_lists" => "genres#search_movie_lists"
+  get "/dowloads" => "movies#dowload"
+  get "/detail_zips" => "movies#detail_zip"
 
-  resources :movies
+  resources :movies 
   resources :genres do
+    collection { post :import }
     get :autocomplete_movie_summary, :on => :collection
   end
 

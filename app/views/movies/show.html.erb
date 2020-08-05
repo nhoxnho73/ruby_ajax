@@ -13,6 +13,12 @@
     <div class="col-sm-3"><h4><%= link_to  "#{@movie.genre_name}", genre_path(@movie.genre.id) %> </h4></div>
   </div>
   <div class="row">
+    <div class="col-sm-6 col-sm-offset-3" style="text-align: center; margin-top: 50px;">
+      <%= image_tag(@movie.image.url, style: "width: 150px; height: auto;") if @movie.image.exists? %>
+      <p style="margin-top: 15px;">Image</p>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-sm-6 col-sm-offset-3" style="padding-top: 50px">
       <%= link_to  "Back", movies_path, class: "btn btn-primary btn-lg btn-block" %>
     </div>

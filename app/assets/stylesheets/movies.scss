@@ -4,3 +4,9 @@
 select.form-control:not([size]):not([multiple]) {
   height: calc(3.25rem + 2px);
 }
+a:not([href]):not([tabindex]){
+  color: #ffffff;
+}
+a:hover:not([href]):not([tabindex]){
+  color: #ffffff;
+}
