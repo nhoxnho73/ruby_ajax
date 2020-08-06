@@ -1,4 +1,5 @@
 require 'axlsx'
+require 'zip'
 class MoviesController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :authenticate_user!
@@ -7,15 +8,30 @@ class MoviesController < ApplicationController
   def index
     
     if current_user.present?
-      @movies = current_user.movies.paginate(page: params[:page], per_page: 10)
+      @movies = current_user.movies.paginate(page: params[:page], per_page: 5)
     end
     
   end
 
+  def download_pdf
+    date = Date.today.strftime '%Y%m%d'
+    respond_to do |format|
+      format.html
+      format.pdf do
+        @movies = Movie.all
+        pdf = ExportReport.new(view_context, @movies)
+
+        send_data pdf.render, filename: "Movie_list_#{date}.pdf",
+          type: "application/pdf"
+      end 
+    end
+  end
+  
+
   def detail_zip
-    
     # @movies = current_user.movies.all
     # @movie = Movie.first.generate_file(@movies)
+
   end
 
   def dowload
@@ -71,7 +87,6 @@ class MoviesController < ApplicationController
   end
 
   def update
-    # binding.pry
     @movie.update! movie_params
     @movie.update!(genre_id: params[:genre_id])
     redirect_to movies_path

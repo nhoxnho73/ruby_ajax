@@ -30,7 +30,7 @@
   </div>
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3" style="padding-top: 30px">
-      <%= link_to  "Delete Movie", movie_path(@movie.id), method: :delete, class: "btn btn-danger btn-lg btn-block" %>
+      <%= link_to  "Delete Movie", movie_path(@movie.id), method: :delete, class: "btn btn-danger btn-lg btn-block", data: {confirm: 'Are you ready?' }  %>
     </div>
   </div>
 </div>

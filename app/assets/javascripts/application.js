@@ -22,22 +22,12 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require movies
-//= require sweetalert2
+//= require genres
+//= require sweet-alert-confirm
 //= require_tree .
 
 
 // document.addEventListener("turbolinks:load", function() {
-//   $("body").on("change", ".ajax-input", function() {
-//     Rails.fire(this.form, "submit");
-//   });
-
-//   return $("input[data-autocomplete]").each(function() {
-//     var url;
-//     url = $(this).data('autocomplete');
-//     return $(this).autocomplete({
-//       source: url
-//     });
-//   });
 
 // });
 

@@ -27,7 +27,7 @@ class GenresController < ApplicationController
   end
 
   def show
-    @movies = Movie.all
+    @movies = Movie.all.paginate(page: params[:page], per_page: 5)
     set_params
   end
 

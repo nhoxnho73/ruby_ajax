@@ -37,13 +37,18 @@ gem 'rubyzip'
 gem 'zip-zip'
 gem "paperclip"
 gem 'will_paginate'
+gem 'will_paginate-bootstrap'
+gem 'prawn'
+gem 'prawn-table'
+
 
 #add gem myself
 gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'rails-jquery-autocomplete'
 gem "jquery-ui-rails"
-gem 'rails-assets-sweetalert2', '~> 5.1.1', source: 'https://rails-assets.org'
+gem 'sweet-alert'
+gem 'sweet-alert-confirm'
 
 # Use ActiveStorage variant
 gem 'mini_magick', '~> 4.8'

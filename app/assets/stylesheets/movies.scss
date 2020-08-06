@@ -10,3 +10,12 @@ a:not([href]):not([tabindex]){
 a:hover:not([href]):not([tabindex]){
   color: #ffffff;
 }
+.table>tbody>tr>td{
+  vertical-align: inherit !important;
+}
+.upload-movie-image{
+padding-top: 20px;
+}
+.label-movie-image{
+  padding-top: 20px !important;
+}
