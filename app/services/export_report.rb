@@ -9,6 +9,7 @@ class ExportReport < Prawn::Document
     @view = view 
     @movies = movies
 
+    font_setup
     movie_line_items
     
   end
@@ -18,7 +19,7 @@ class ExportReport < Prawn::Document
     table movie_item_rows do
       self.row_colors = ["DDDDDD", "FFFFFF"]
       row(0).font_style = :bold
-      row(0).font_size = 
+      row(0).font_size = 16
       column(0).align = :center
       column(1).align = :left
       columns(2..5).align = :center
@@ -38,11 +39,28 @@ class ExportReport < Prawn::Document
     # text "\n"
     # text "Summary"
     # text "\n"
+
+    
+
     [["ID", "Name", "Director", "Star", "Release date", "Summary"]] +
     @movies.map do |item|
       [item.id, item.name, item.director,
         item.star, item.release_date, item.summary]
     end
+  end
+
+  # def image_cell image_url
+  # "#{image open(Rails.root+"/public/images/246x0w.png")}"
+  #   image open(Rails.root + "/#{image_url}"), position: :center, width: 50
+  # end
+  
+  def font_setup
+    font_families.update("NotoSans" => {
+      :normal => "vendor/assets/fonts/NotoSans-Regular.ttf",
+      :italic => "vendor/assets/fonts/NotoSans-Italic.ttf",
+      :bold => "vendor/assets/fonts/NotoSans-Bold.ttf",
+    })
+    font "NotoSans"
   end
 
 end

@@ -1,0 +1,16 @@
+current directory: /home/phonglt/project_rails/demo/vendor/bundle/ruby/2.5.0/gems/binding_of_caller-0.8.0/ext/binding_of_caller
+/home/phonglt/.rvm/rubies/ruby-2.5.3/bin/ruby -r ./siteconf20200730-20937-1nka8zl.rb extconf.rb
+
+current directory: /home/phonglt/project_rails/demo/vendor/bundle/ruby/2.5.0/gems/binding_of_caller-0.8.0/ext/binding_of_caller
+make "DESTDIR=" clean
+make: *** No rule to make target 'clean'.  Stop.
+
+current directory: /home/phonglt/project_rails/demo/vendor/bundle/ruby/2.5.0/gems/binding_of_caller-0.8.0/ext/binding_of_caller
+make "DESTDIR="
+echo "Nada."
+Nada.
+
+current directory: /home/phonglt/project_rails/demo/vendor/bundle/ruby/2.5.0/gems/binding_of_caller-0.8.0/ext/binding_of_caller
+make "DESTDIR=" install
+echo "Nada."
+Nada.

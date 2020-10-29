@@ -1,0 +1,15 @@
+current directory: /home/phonglt/project_rails/demo/vendor/bundle/ruby/2.5.0/gems/debug_inspector-0.0.3/ext/debug_inspector
+/home/phonglt/.rvm/rubies/ruby-2.5.3/bin/ruby -r ./siteconf20200730-20937-1e28uck.rb extconf.rb
+creating Makefile
+
+current directory: /home/phonglt/project_rails/demo/vendor/bundle/ruby/2.5.0/gems/debug_inspector-0.0.3/ext/debug_inspector
+make "DESTDIR=" clean
+
+current directory: /home/phonglt/project_rails/demo/vendor/bundle/ruby/2.5.0/gems/debug_inspector-0.0.3/ext/debug_inspector
+make "DESTDIR="
+compiling debug_inspector.c
+linking shared-object debug_inspector.so
+
+current directory: /home/phonglt/project_rails/demo/vendor/bundle/ruby/2.5.0/gems/debug_inspector-0.0.3/ext/debug_inspector
+make "DESTDIR=" install
+/usr/bin/install -m 0755 debug_inspector.so ./.gem.20200730-20937-18aruyb

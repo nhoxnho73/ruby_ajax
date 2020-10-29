@@ -38,9 +38,13 @@ gem 'zip-zip'
 gem "paperclip"
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
-gem 'prawn'
+gem 'prawn' #export pdf
 gem 'prawn-table'
-
+gem 'month'
+gem 'paypal-sdk-rest'
+gem "simple_calendar" #use calendar rails g simple_calendar:view
+gem 'high_voltage' #use hilight note ticker
+gem 'bootstrap_form'
 
 #add gem myself
 gem 'bootstrap', '~> 4.0.0'

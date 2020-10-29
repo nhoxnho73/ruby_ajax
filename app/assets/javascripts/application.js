@@ -24,6 +24,7 @@
 //= require movies
 //= require genres
 //= require sweet-alert-confirm
+//= require bootstrap-datepicker
 //= require_tree .
 
 

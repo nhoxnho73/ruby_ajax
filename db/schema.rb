@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_05_023517) do
+ActiveRecord::Schema.define(version: 2020_10_27_024152) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -33,8 +33,40 @@ ActiveRecord::Schema.define(version: 2020_08_05_023517) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "appointments", force: :cascade do |t|
+    t.datetime "appointment_time"
+    t.integer "duration", limit: 4
+    t.float "price", limit: 24
+    t.integer "location_id", limit: 4
+    t.integer "user_id", limit: 4
+    t.integer "client_id", limit: 4
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.string "name", limit: 255
+    t.string "phone_number", limit: 255
+    t.string "email", limit: 255
+    t.integer "user_id", limit: 4
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "genres", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "nickname", limit: 255
+    t.string "city", limit: 255
+    t.string "street_address", limit: 255
+    t.string "state", limit: 255
+    t.string "zipcode", limit: 255
+    t.string "business_name", limit: 255
+    t.integer "user_id", limit: 4
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -53,6 +85,24 @@ ActiveRecord::Schema.define(version: 2020_08_05_023517) do
     t.string "image_content_type"
     t.bigint "image_file_size"
     t.datetime "image_updated_at"
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.string "name"
+    t.decimal "price"
+    t.integer "kisses"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer "plan_id"
+    t.string "email"
+    t.string "stripe_customer_token"
+    t.string "paypal_customer_token"
+    t.string "paypal_recurring_profile_token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

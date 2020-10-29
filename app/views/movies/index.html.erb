@@ -26,17 +26,13 @@
   </table>
 </div>
 <div class="row">
-  <div class="col-md-8"></div>
-  <div class="col-md-4">
-    <%= will_paginate @movies, renderer: BootstrapPagination::Rails %>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-10">
+  <div class="col-md-8" style="padding-top: 20px;">
     <%= link_to "Download", dowloads_path, class: "btn btn-success" %> |
-    <%= link_to "Download Zip", detail_zips_path, class: "btn btn-primary" %> |
+    <%= link_to "Download Zip", detail_zips_path(format: :zip), class: "btn btn-primary" %> |
     <%= link_to "New Movie", new_movie_path, class: "btn btn-warning" %> |
     <%= link_to "Download pdf", download_pdfs_path(format: "pdf"), class: "btn btn-danger" %>
   </div>
-</div>
+  <div class="col-md-4">
+    <%= will_paginate @movies, renderer: BootstrapPagination::Rails %>
+  </div>
 </div>

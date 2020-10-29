@@ -1,0 +1,6 @@
+<% if object && object.errors.any? %>
+  <h2><%= "#{object.errors.full_messages.uniq.count} errors(s):"%></h2>
+  <ul>
+    <li><%= message %></li>
+  </ul>
+<% end %>

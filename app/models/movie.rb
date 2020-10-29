@@ -1,3 +1,5 @@
+require 'fileutils'
+
 class Movie < ApplicationRecord
   belongs_to :genre
   belongs_to :user
@@ -6,6 +8,8 @@ class Movie < ApplicationRecord
   validates_attachment :image, 
                     content_type: { content_type: /\Aimage\/.*\z/ },
                     size: { less_than: 1.megabyte }
+
+  delegate :email, to: :user
 
   def movie_method
     "#{self.name}"
@@ -30,7 +34,7 @@ class Movie < ApplicationRecord
 
   def self.generate_file movies
     _folder_path = Pathname.new('/var/movie_web/movie/') + SecureRandom.hex(20)
-    FileUtils.mkdir_p _folder_path
+    FileUtils.mkdir_p _folder_path, :mode => 02750
     _file_path = _folder_path + ".csv"
     _detail_file_path = _folder_path + ".zip"
 

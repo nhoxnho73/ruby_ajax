@@ -1,0 +1,32 @@
+<div class="container">
+<h1>Movies</h1>
+
+<div class="row">
+  <table class="table">
+    <tbody>
+      <tr> 
+        <td><strong>Name</strong></td>
+        <td><strong>Director</strong></td>
+        <td><strong>Star</strong></td>
+        <td><strong>Genre</strong></td>
+        <td style="text-align: center;"><strong>Image</strong></td>
+        <td></td>
+      </tr>
+      <% @movies.each do |movie| %>
+        <tr>
+          <td><%= movie.name %></td>
+          <td><%= movie.director %></td>
+          <td><%= movie.star %></td>
+          <td><%= movie.genre.name %></td>
+          <td style="text-align: center;"><%= image_tag(movie.image.url,class: 'media-object', style: "width: 60px; height: auto;") if movie.image.exists? %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="row">
+  <div class="col-md-8"></div>
+  <div class="col-md-4">
+    <%= will_paginate @movies, renderer: BootstrapPagination::Rails %>
+  </div>
+</div>

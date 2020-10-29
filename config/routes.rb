@@ -10,14 +10,22 @@ Rails.application.routes.draw do
   get "/dowloads" => "movies#dowload"
   get "/detail_zips" => "movies#detail_zip"
   get "/download_pdfs" => "movies#download_pdf"
+  get "paypal/checkout", to: "subscriptions#paypal_checkout"
 
   resources :movies 
   resources :genres do
     collection { post :import }
     get :autocomplete_movie_summary, :on => :collection
   end
-
-  
+  resources :watch_movies
+  resources :locations do
+    resources :appointments, only: [:index, :show, :new]
+  end
+  resources :appointments
+  resources :clients do
+    resources :appointments, only: [:index, :show, :new]
+  end
+  get '/locations/:id/client_list', to: 'locations#client_list', as: 'client_list'
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
 end

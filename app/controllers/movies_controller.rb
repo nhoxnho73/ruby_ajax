@@ -29,9 +29,19 @@ class MoviesController < ApplicationController
   
 
   def detail_zip
-    # @movies = current_user.movies.all
-    # @movie = Movie.first.generate_file(@movies)
-
+    @movie  = Movie.all
+    respond_to do |format|
+      format.html
+      format.zip do
+        compressed_filestream = Zip::OutputStream.write_buffer do |zos|
+          content = render_to_string xlsx: 'export', filename: dowload
+          zos.put_next_entry(dowload)
+          zos.print content
+        end
+        compressed_filestream.rewind
+        send_data compressed_filestream.read, filename: "movies.zip"
+      end
+    end
   end
 
   def dowload

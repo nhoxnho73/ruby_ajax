@@ -1,0 +1,3 @@
+class WatchMovie < Movie
+  
+end
