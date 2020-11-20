@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   get "paypal/checkout", to: "subscriptions#paypal_checkout"
 
   resources :movies 
+  resources :rooms 
+
+  resources :messages
   resources :genres do
     collection { post :import }
     get :autocomplete_movie_summary, :on => :collection
@@ -28,4 +31,5 @@ Rails.application.routes.draw do
   get '/locations/:id/client_list', to: 'locations#client_list', as: 'client_list'
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
+  mount ActionCable.server => '/cable' #kich hoat actioncable
 end

@@ -1,0 +1,15 @@
+.container
+  %h2 List rooms
+  %table.table.table-hover
+    %thead
+      %tr
+        %th Name
+        %th Owner
+    %tbody
+      - @rooms.each do |room|
+        %tr
+          %td
+            = link_to room.name, room_path(room)
+          %td 
+            = room.user.email
+= link_to "Create room", new_room_path

@@ -1,9 +1,11 @@
-class Date
-  def to_month
-    Month.new year, month
+class Month
+  def to_date
+    Date.new year, number, 1
   end
 
-  def near_work_day
-    0.business_day.after self
+  alias :beginning_of_month :to_date
+
+  def end_of_month
+    to_date.end_of_month
   end
 end

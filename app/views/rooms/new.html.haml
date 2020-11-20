@@ -1,0 +1,13 @@
+%h2 Create room
+.row
+  =form_for @room do |f|
+    .form-group
+      .col-sm-3
+        =f.label :name, "name"
+      .col-sm-9
+        = f.text_field :name
+
+    .form-group
+      .col-sm-3
+      .col-sm-6
+        =f.submit "Save", disable_with: 'Submiting...', class: "form-control btn btn-warning"

@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+  %body
+    %p You got a new movie from 
+      = @movie.name!
+    Order details 
+    %br
+    --------------------------
+
+    %p Name: 
+      = @movie.name
+    %p Description: 
+      = @movie.summary
+    %p
+      Message: 
+      %br
+      ----------
+      %br
+      Thank you
+

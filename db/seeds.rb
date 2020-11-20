@@ -12,5 +12,5 @@ CSV.read('seed_files/genre.csv').each do |row|
 end
 
 CSV.read('seed_files/movie.csv').each do |row|
-  Moive.find_or_create_by! genre_id: row[0], name: row[1], director: row[2], star: row[3], release_date: [4], summary: [5]
+  Moive.find_or_create_by! genre_id: row[0], name: row[1], director: row[2], star: row[3], release_date: row[4], summary: row[5]
 end

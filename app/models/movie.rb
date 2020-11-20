@@ -1,4 +1,6 @@
 require 'fileutils'
+require 'csv'
+require 'axlsx'
 
 class Movie < ApplicationRecord
   belongs_to :genre
@@ -10,6 +12,7 @@ class Movie < ApplicationRecord
                     size: { less_than: 1.megabyte }
 
   delegate :email, to: :user
+  scope :movie_name, ->(movie_name) { where("name LIKE ?", "%#{movie_name}%")}
 
   def movie_method
     "#{self.name}"
@@ -20,39 +23,25 @@ class Movie < ApplicationRecord
     genre.name
   end
 
-  def target_month
-    Month.parse super
-  end
-
-  def target_month=(value)
-    if value.is_a?(Month)
-      super value.to_s
-    else
-      super value
-    end
-  end
-
-  def self.generate_file movies
-    _folder_path = Pathname.new('/var/movie_web/movie/') + SecureRandom.hex(20)
-    FileUtils.mkdir_p _folder_path, :mode => 02750
-    _file_path = _folder_path + ".csv"
-    _detail_file_path = _folder_path + ".zip"
+  def generate_file
+    _folder_path = Pathname.new('/var/demo/movie/') + SecureRandom.hex(20)
+    FileUtils.mkdir_p _folder_path
+    _file_path = _folder_path + "#{release_date.to_s}.csv"
+    _detail_file_path = _folder_path + "#{release_date.to_s}.zip"
 
     Dir.mktmpdir do |dir|
       _dir_path = Pathname.new dir
       Zip::File.open(_detail_file_path, Zip::File::CREATE) do |zipfile|
         CSV.open _file_path, 'wb' do |csv|
-          csv << ['csv_type(MOVIE)', "ID", "Name", "Director", "Star", "Release date", "Summary"]
-          movies.each do |movie|
-            month_str = "#{target_month.year}year#{target_month.number}month"
-            billing_number = "S#{sprintf('%02d', target_month.number)}#{target_month.year}1#{sprintf('%05', movie.id)}"
-
+          csv << ['csv_type(MOVIE)', "Name", "Director", "Star", "Release date", "Summary"]
+          Movie.all.each do |movie|
+            month_str = "#{release_date.year}year#{release_date.day}month"
             csv << [
-              '20201',
-              "Movie_#{month_str}_web",
-              target_month.end_of_month.strftime('%Y/%m/%d'),
-              (target_month + 1).end_of_month.strftime('%Y/%m/%d'),
-              target_month.end_of_month.strftime('%Y/%m/%d'),
+              # '20201',
+              # "Movie_#{month_str}_web",
+              # release_date.end_of_month.strftime('%Y/%m/%d'),
+              # (release_date + 1).end_of_month.strftime('%Y/%m/%d'),
+              # release_date.end_of_month.strftime('%Y/%m/%d'),
               movie.name,
               movie.director,
               movie.star,

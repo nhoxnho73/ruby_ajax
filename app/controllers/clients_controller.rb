@@ -28,13 +28,13 @@ class ClientsController < ApplicationController
   end
 
   def update
-    @client.update(client_params)
+    @client.update!(client_params)
     redirect_to client_path(@client)
 
   end
 
   def show
-    
+    @appointments = @client.appointments
   end
 
   def destroy

@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-4">
         <select id='select_genre'>
-          <option value='1'>Select Genre</option>
+          <%# <option value='0'>Select Genre</option> %>
           <% @genres.each do |f|%>
           <option value='<%= f.id %>'>
           <%= f.name %>

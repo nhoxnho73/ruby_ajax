@@ -1,0 +1,16 @@
+%h4 
+  = current_user.email
+
+.messaging
+  .inbox_msg
+    .mesgs
+      .msg_history{ :id => "messages", :current_user => "#{current_user.id}", :room_id => "#{@room.id}" }
+        -@messages.each do |message|
+          -if message.user_id == current_user.id
+            = render "messages/message", message: message
+          -else
+            = render "messages/message_other", message: message
+    .type_msg
+      .input_msg_write
+        %input{:id => "user_id", :name => "user_id", :type => "hiden", :value => "#{current_user.id}"}
+        %input{:type => "text", :class => "write_msg js-message-content", :placeholder => "Type a message"}

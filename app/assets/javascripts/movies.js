@@ -1,29 +1,9 @@
 $(document).ready(function() {
 
-  // load_genre();
-  // function load_genre() {
-  //   $.ajax({
-  //     url: "update_movie_list",
-  //     data: {
-  //       genre_id : $('#select_genre').val()
-  //     },
-  //     method: 'GET',
-  //     success: function(data) {
-  //       var movies = data.movies;
-  //       var movie = '';
-  //       for (let i = 0; i < movies.length; i++) {
-  //         movie += "<li><input id='list_movie' type='checkbox' multiple='true'  name='list_movie[]' value='" + movies[i].name + "'>" + movies[i].name + "</li>"
-  //       }
-  //       $('#movieDiv').html(
-  //         `<ul>${movie}</ul>`
-  //       )
-  //     }
-  //   });
-  // }
-
-  $('#select_genre').change(function() {
+  load_genre();
+  function load_genre() {
     $.ajax({
-      url: "update_movie_list",
+      url: "/update_movie_list",
       data: {
         genre_id : $('#select_genre').val()
       },
@@ -31,12 +11,36 @@ $(document).ready(function() {
       success: function(data) {
         var movies = data.movies;
         var movie = '';
-        for (let i = 0; i < movies.length; i++) {
-          movie += "<li><input id='list_movie' type='checkbox' multiple='true'  name='list_movie[]' value='" + movies[i].name + "'>" + movies[i].name + "</li>"
+        if (movies !== null) {
+          for (let i = 0; i < movies.length; i++) {
+            movie += "<li><input id='list_movie' type='checkbox' multiple='true'  name='list_movie[]' value='" + movies[i].name + "'>" + movies[i].name + "</li>"
+          }
+          $('#movieDiv').html(
+            `<ul>${movie}</ul>`
+          )
         }
-        $('#movieDiv').html(
-          `<ul>${movie}</ul>`
-        )
+      }
+    });
+  }
+
+  $('#select_genre').change(function() {
+    $.ajax({
+      url: "/update_movie_list",
+      data: {
+        genre_id : $('#select_genre').val()
+      },
+      method: 'GET',
+      success: function(data) {
+        var movies = data.movies;
+        var movie = '';
+        if (movies !== null) {
+          for (let i = 0; i < movies.length; i++) {
+            movie += "<li><input id='list_movie' type='checkbox' multiple='true'  name='list_movie[]' value='" + movies[i].name + "'>" + movies[i].name + "</li>"
+          }
+          $('#movieDiv').html(
+            `<ul>${movie}</ul>`
+          )
+        }
       }
     });
   });
@@ -79,7 +83,7 @@ $(document).ready(function() {
 
   $('.search_movie').click(function() {
     $.ajax({
-      url: "search_movie_lists",
+      url: "/search_movie_lists",
       method: 'GET',
       data: {
         list_movie : listMovie,
@@ -97,7 +101,7 @@ $(document).ready(function() {
               +"<td>"+searchs[i].director+"</td>"
               +"<td>"+searchs[i].star+"</td>"
               +"<td>"+searchs[i].release_date+"</td>"
-              + `<td><a href="${searchs[i].summary}">${searchs[i].summary}</a></td>`
+              + `<td><a href="/movies/${searchs[i].id}">${searchs[i].summary}</a></td>`
             + "</tr>"
           }
           $('#showList').html(

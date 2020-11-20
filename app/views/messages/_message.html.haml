@@ -1,0 +1,8 @@
+.message
+  .outgoing_msg
+    .sent_msg
+      -unless message.content.blank?
+        %p=message.content
+      %span.time_date
+        = time_ago_in_words message.created_at
+        ago
