@@ -48,7 +48,7 @@ gem 'bootstrap_form'
 gem 'haml'
 
 #add gem myself
-gem 'bootstrap', '~> 4.0.0'
+gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'rails-jquery-autocomplete'
 gem "jquery-ui-rails"
