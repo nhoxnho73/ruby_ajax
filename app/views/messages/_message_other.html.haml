@@ -1,7 +1,7 @@
 .message
   .incoming_msg
     .incoming_msg_img
-      %img{ src: "https://ptetutorials.com/images/user-profile.png", alt: "sunil" }
+      %img{ src: "https://ptetutorials.com/images/user-profile.png", alt: "sunil", style: "height: 30px !important; width: auto;" }
     .received_msg
       .received_withd_msg
         -unless message.content.blank?
@@ -9,5 +9,5 @@
             = message.content
 
         %span.time_date
-          = time_ago_in_words message.created_at
-            ago
+          = time_ago_in_words message&.created_at
+          ago

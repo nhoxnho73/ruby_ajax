@@ -7,4 +7,5 @@ class ApplicationController < ActionController::Base
       return user.user_name
     end
   end
+
 end

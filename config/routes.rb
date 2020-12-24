@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get "/dowloads" => "movies#dowload"
   get "/detail_zips" => "movies#detail_zip"
   get "/download_pdfs" => "movies#download_pdf"
-  get "paypal/checkout", to: "subscriptions#paypal_checkout"
+  get "/paypal/checkout", to: "subscriptions#paypal_checkout"
 
   resources :movies 
   resources :rooms 

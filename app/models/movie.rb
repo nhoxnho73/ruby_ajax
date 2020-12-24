@@ -14,6 +14,10 @@ class Movie < ApplicationRecord
   delegate :email, to: :user
   scope :movie_name, ->(movie_name) { where("name LIKE ?", "%#{movie_name}%")}
 
+  def self.movie_name
+    self.pluck(:name)
+  end
+
   def movie_method
     "#{self.name}"
   end

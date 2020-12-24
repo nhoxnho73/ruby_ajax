@@ -10,7 +10,7 @@ class MoviesController < ApplicationController
     if current_user.present?
       @movies = current_user.movies.paginate(page: params[:page], per_page: 5)
     end
-    
+
   end
 
   def download_pdf
@@ -49,10 +49,15 @@ class MoviesController < ApplicationController
     date = Date.today.strftime '%Y%m%d'
     Axlsx::Package.new do |package|
       package.workbook do |wb|
+        default = {sz: 12, alignment: {horizontal: :left, vertical: :center}}
+        default_style    = wb.styles.add_style default
+        stt_style        = wb.styles.add_style default.merge({alignment: {horizontal: :center, vertical: :center}})
+        movie_name_style = wb.styles.add_style default.merge({border: {style: :thin, color: '170DD7', edges: [:top, :bottom]}})
+        star_movie_style = wb.styles.add_style default.merge({bg_color: 'C0C0C0', alignment: {horizontal: :center, vertical: :center}})
         wb.add_worksheet(name: "#{date}_moves") do |sheet|
-          sheet.add_row ["ID", "Name", "Director", "Star", "Release date", "Summary"]
-          movies.each do |movie|
-            sheet.add_row [movie.id, movie.name, movie.director, movie.star, movie.release_date, movie.summary]
+          sheet.add_row ["STT", "ID", "Name", "Director", "Star", "Release date", "Summary"], style: [nil, nil, nil, nil, star_movie_style, nil, movie_name_style]
+          movies.each_with_index do |movie, i|
+            sheet.add_row [i+1, movie.id, movie.name, movie.director, movie.star, movie.release_date, movie.summary], style: [nil, nil, nil, nil, star_movie_style, nil, movie_name_style]
           end
         end
       end
@@ -117,7 +122,6 @@ class MoviesController < ApplicationController
   def movie_params
     params.require(:movie).permit(:name, :genre_id, :director, :star, :release_date, :summary, :user_id, :image)
   end
-
 
 end
 
