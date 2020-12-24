@@ -73,6 +73,7 @@ group :development, :test do
   gem 'pry-stack_explorer'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
   gem 'faker'
 end
 
@@ -91,6 +92,7 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'database_cleaner'
+  gem 'shoulda-matchers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
